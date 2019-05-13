@@ -11,7 +11,7 @@ library(shiny)
 library(ggplot2)
 library(dplyr)
 
-tomato <- read.csv("./Data/Tomato.csv")
+tomato <- read.csv("./Data/Tomato.csv",header=TRUE,na.strings=NA)
 
 
 # Define server logic required to draw a histogram
@@ -24,7 +24,8 @@ shinyServer(function(input, output) {
     pl <- ggplot(data=tomato.filtered,
                  aes_string(x=input$trait1,
                             y=input$trait2,
-                            color=tomato.filtered$species)
+                            color=tomato.filtered$species,
+                            fill=NULL)
                  )
     # draw the scatter plot
     pl + geom_point()
