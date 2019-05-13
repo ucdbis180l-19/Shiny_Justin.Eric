@@ -15,25 +15,32 @@ shinyUI(fluidPage(
   # Application title
   titlePanel("Tomato data tool"),
   
-  helpText("some help text"),
+  helpText("Explore the relationships between tomato traits"),
   
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
     sidebarPanel(
        radioButtons("trait1",
                    "Choose a trait to display:",
-                   c("hyp",
-                     "petleng",
-                     "leafleng",
-                     "leafwid",
-                     "leafnum"),
+                   c("Petal length" = "petleng",
+                     "Leaf length" = "leafleng",
+                     "Leaf width" = "leafwid",
+                     "Leaf number" = "leafnum"),
        ),
        radioButtons("trait2",
                     "Choose a trait to display:",
-                    c("hyp",
-                      "petleng",
-                      "leafwid",
-                      "leafnum")
+                    c("Petal length" = "petleng",
+                      "Leaf length" = "leafleng",
+                      "Leaf width" = "leafwid",
+                      "Leaf number" = "leafnum"),
+       ),
+       checkboxGroupInput("species",
+                   "Choose species to include",
+                  c("S. pennellii",
+                    "S. peruvianum",
+                    "S. chilense",
+                    "S. chmielewskii",
+                    "S. habrochaites"),
     )),
     
     # Show a plot of the generated distribution
